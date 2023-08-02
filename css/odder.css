@@ -1,0 +1,35 @@
+.texa{
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0px;
+}
+.pay{
+    margin-top: 10px;
+}
+.payslip{
+    border: 1px solid #ccc;
+}
+.payslip:hover{
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 1px solid #f85909;
+}
+
+.col-10{
+    padding-top: 10px;
+}
+.col-6{
+    margin: 30px 0px    
+}
+.giohang{
+    margin: 0px 50px;
+    -webkit-box-shadow: -2px 0px 14px -3px rgba(0,0,0,1);
+-moz-box-shadow: -2px 0px 14px -3px rgba(0,0,0,1);
+box-shadow: -2px 0px 14px -3px rgba(0,0,0,1);
+}
+
+.inpu{
+    width:165px;
+}
+

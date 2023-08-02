@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Filter Example</title>
+</head>
+
+<body>
+    <label for="selectCity">Chọn thành phố:</label>
+    <select id="selectCity" onchange="filterByCity()">
+        <option value="HN">Hà Nội</option>
+        <option value="HCM">TP. Hồ Chí Minh</option>
+        <option value="DN">Đà Nẵng</option>
+        <option value="HP">Hải Phòng</option>
+    </select>
+
+
+
+    <table id="dataTable">
+        <tr>
+            <th>Hà Nội</th>
+            
+            <!-- Thêm các cột thông tin khác nếu cần -->
+        </tr>
+        <tr>
+            <td>CG</td>
+            <td>BD</td>
+            <!-- Thêm các cột thông tin khác nếu cần -->
+        </tr>
+        <tr>
+            <td>HCM</td>
+            <td>Thông tin quận TP. Hồ Chí Minh</td>
+            <!-- Thêm các cột thông tin khác nếu cần -->
+        </tr>
+        <tr>
+            <td>DN</td>
+            <td>Thông tin quận Đà Nẵng</td>
+            <!-- Thêm các cột thông tin khác nếu cần -->
+        </tr>
+        <tr>
+            <td>HP</td>
+            <td>Thông tin quận Hải Phòng</td>
+            <!-- Thêm các cột thông tin khác nếu cần -->
+        </tr>
+        <!-- Thêm các hàng dữ liệu khác nếu cần -->
+    </table>
+
+
+
+    <script>
+        function filterByCity() {
+            var selectedCity = document.getElementById("selectCity").value;
+            var tableRows = document.getElementById("dataTable").rows;
+            for (var i = 1; i < tableRows.length; i++) {
+                var row = tableRows[i];
+                var districtCode = row.cells[0].innerText;
+                if (districtCode === selectedCity) {
+                    row.style.display = "table-row";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

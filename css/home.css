@@ -1,0 +1,154 @@
+.test {
+    align-items: center;
+    padding: 0px 20px;
+    
+};
+.navbar navbar-expand-lg navbar-light bg-light {
+    align-items: center;
+}
+.icon-cart{
+    padding: 0px 10px;
+}
+.cate{
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+}
+.cate .category{
+    align-items: center;
+    width: 25%;
+    
+}
+.cate .category:hover{
+    border-top-right-radius:1px;
+    border-bottom-left-radius:1px;
+}
+.navbar-brand{
+    align-items: center;
+}
+.prog{
+    margin: 50px;
+    
+}
+label{
+    margin: 13px;
+}
+
+.text{
+    width: 135px;
+    align-items: center;
+    margin: 16px 0px;
+}
+.img{
+    width: 15px;
+    height: 17px;
+    align-items: center;
+}
+.shoes{
+    align-items: center;
+}
+.soccer{
+    margin-right: 50px;
+}
+.bongda{
+    margin: 50px;
+}
+
+.img-phone{
+    width: 30px;
+    height: 30px;
+    margin-top: 13px;
+
+}
+.pro-header{
+    margin: 30px 0px;
+}
+.think{
+    margin: 30px 0px;
+}
+.img-ban{
+    width: 100%;
+    margin: 65px 0px;
+}
+
+.card:hover{
+    transform: scale(1.1);
+
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 1px solid #f85909;
+}       
+.card{
+    transition: all 0.3s ease-in-out;
+}    
+.carousel-inner{
+    transition: all 0.3s ease-in-out;
+}
+.carousel-inner:hover{
+    transform: scale(1.05);
+
+    border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    border: 1px solid #7ff707;
+}
+.col-4{
+    transition: all 0.3s ease-in-out;
+}
+.col-4:hover{
+    transform: scale(1.05);
+}
+p:hover{
+    color: #f85909;
+}
+.logo{
+    margin: 50px;
+}
+li:hover{
+    color: #f85909;
+}
+.catw:hover{
+    background-color: #ccc;
+
+}
+.catw{
+    border-right: 1px solid #e1e0e0;
+    border-bottom: 1px solid #e1e0e0;
+}
+.img-footer{
+    position: relative;
+    
+}   
+.posi{
+    position: absolute;
+    width: 45%;
+    background-color: rgb(186, 183, 183);
+    top: 145px;
+    left: 366px;
+  
+    
+}
+
+.pp{
+    margin-top: 10px;
+}
+
+.textt{
+    margin: 0px 20px;
+    
+}
+
+
+.money{
+    text-align: right;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }

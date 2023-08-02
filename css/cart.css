@@ -1,0 +1,44 @@
+.cart{
+    
+    margin: auto;
+    text-align: center;
+    
+    
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
+
+}
+
+form{
+    padding: 10px;
+}
+.cart h2{ 
+    margin-bottom: 20px;
+}
+.cart table{
+    width: 100%;
+}
+.cart table thead tr th:first-child{
+    text-align: left;
+}
+.cart table tr td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0px;
+}
+.cart table thead tr th:last-child{
+    text-align: right;
+}
+.cart table tbody tr td:last-child{
+    text-align: right;
+}
+.pricetotal{
+    padding-right: 130px;
+}
+.err{
+
+    display: none;
+    color: red;
+    font-size: 14px;
+  }
+  

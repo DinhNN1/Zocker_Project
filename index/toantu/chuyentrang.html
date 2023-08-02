@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="provinceSelect">
+        <option value="">Chọn tỉnh</option>
+        <option value="1">Tỉnh A</option>
+        <option value="2">Tỉnh B</option>
+        <!-- Thêm các tỉnh khác nếu cần -->
+      </select>
+      
+      <select id="districtSelect">
+        <option value="">Chọn huyện</option>
+      </select>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // Một đoạn mã giả định về dữ liệu về tỉnh và huyện
+  const data = {
+    "1": ["Huyện A1", "Huyện A2", "Huyện A3"],
+    "2": ["Huyện B1", "Huyện B2", "Huyện B3"],
+    // Thêm dữ liệu huyện cho các tỉnh khác nếu cần
+  };
+
+  // Sự kiện khi chọn tỉnh
+  $("#provinceSelect").on("change", function() {
+    const provinceId = $(this).val();
+    const districtSelect = $("#districtSelect");
+
+    // Xóa các option hiện tại trong danh sách huyện
+    districtSelect.empty();
+
+    // Thêm option "Chọn huyện" để cho người dùng chọn lại
+    districtSelect.append(new Option("Chọn huyện", ""));
+
+    if (provinceId) {
+      // Lấy danh sách huyện tương ứng với tỉnh đã chọn
+      const districts = data[provinceId];
+
+      // Thêm các option huyện vào danh sách huyện
+      districts.forEach(district => {
+        districtSelect.append(new Option(district, district));
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
