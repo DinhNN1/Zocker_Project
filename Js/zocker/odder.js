@@ -1,3 +1,4 @@
+// THÔNG TIN GIAO HÀNG 
 
 /// CHọn tỉnh Huyện 
 
@@ -32,9 +33,18 @@ function chonTinhHuyen() {
 const provinceSelect = document.getElementById("provinceSelect");
 provinceSelect.addEventListener('change', chonTinhHuyen)
 
-// ---------------------------------------------------------
-// Lấy thông tin 
+// ---------------------------------------------------------    
+
+// tạo id duy nhất 
+function generateUniqueId() {
+    const timestamp = Date.now().toString(36);
+    const randomPart = Math.random().toString(36).substr(2, 5);
+    return timestamp + randomPart;
+};
+
+// Lấy thông tin
 function info() {
+
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const tinh = document.getElementById("provinceSelect").value;
@@ -42,19 +52,36 @@ function info() {
     const phuong = document.getElementById("phuong").value;
     const diachi = document.getElementById("add").value;
     const ghichu = document.getElementById("textarea").value;
-  
+    const customerId = generateUniqueId();
+    document.getElementById('customerId').value = customerId;
+
+    // Tính tổng tiền trong giỏ hàng
+    let totalAmount = 0;
+    const cartTable = document.getElementById("cart");
+    const rows = cartTable.getElementsByTagName("tr");
+    for (let i = 1; i < rows.length; i++) {
+        const discountedTotalValue = parseInt(rows[i].cells[5].textContent.replace(/[^0-9]/g, ""));
+        totalAmount += discountedTotalValue;
+    }
+
     const userInfo = {
-      name: name,
-      phone: phone,
-      tinh: tinh,
-      huyen: huyen,
-      phuong: phuong,
-      diachi: diachi,
-      ghichu: ghichu,
+
+        name: name,
+        phone: phone,
+        tinh: tinh,
+        huyen: huyen,
+        phuong: phuong,
+        diachi: diachi,
+        ghichu: ghichu,
+        ID: customerId,
+        TOTAL: totalAmount.toLocaleString() + ' VNĐ', // Thêm trường tổng tiền vào userInfo
     };
-  
     
-document.getElementById("userInfo").textContent = JSON.stringify(userInfo, null, 1);
+
+
+    document.getElementById("userInfo").textContent = JSON.stringify(userInfo, null, 1);
+
+   
 }
 
 
@@ -93,25 +120,3 @@ document.getElementById("userInfo").textContent = JSON.stringify(userInfo, null,
 
 
 
-
-//   // Sự kiện khi chọn tỉnh
-//   $("#provinceSelect").on("change", function() { //gán sự kiện change cho thẻ id
-//     const tinh = $(this).val(); // lấy gtri tỉnh = cách dùng val()
-//     const huyen = $("#districtSelect");
-
-//     // Xóa các option hiện tại trong danh sách huyện
-//     huyen.empty();
-
-//     // Thêm option "Chọn huyện" để cho người dùng chọn lại
-//     huyen.append(new Option("--Huyện--", ""));
-
-//     if (tinh) {
-//       // Lấy danh sách huyện tương ứng với tỉnh đã chọn
-//       const districts = data[tinh];
-
-//       // Thêm các option huyện vào danh sách huyện
-//       districts.forEach(district => {
-//         huyen.append(new Option(district, district));
-//       });
-//     }
-//   });

@@ -1,3 +1,5 @@
+//hiển thị giỏ hàng trong html
+
 let carttItems = 0;
 
 function toggleCartt() {
@@ -19,6 +21,12 @@ function updateCarttIcon() {
   const carttIcon = document.querySelector('.cartt-icon');
   carttIcon.textContent = `Giỏ hàng (${carttItems})`;
 }
+
+
+
+
+
+
 
 
 

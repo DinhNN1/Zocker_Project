@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Message Example</title>
+  <link rel="stylesheet" href="/zocker/css/test2.css">
+</head>
+
+<body>
+
+
+
+  <!-- Các sản phẩm -->
+  <!-- Các sản phẩm -->
+  <div class="col-4">
+    <div class="product-pre">
+      <div class="card">
+        <img class="card-img-top" src="/zocker/img/phụ kiện/tui-trong-zocker_4356_HasThumb_Thumb.jpg"
+          alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Túi trống thể thao Zocker</p>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" data-name="Túi trống thể thao Zocker"
+              data-price="450000">450.000VNĐ</button>
+            <button type="button" class="btn btn-outline-warning add-to-cart-btn">Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="product-pre">
+      <div class="card">
+        <img class="card-img-top" src="/zocker/img/phụ kiện/tui-trong-zocker_4356_HasThumb_Thumb.jpg"
+          alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Túi trống thể thao</p>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" data-name="Túi trống thể thao Zocker"
+              data-price="450000">450.000VNĐ</button>
+            <button type="button" class="btn btn-outline-warning add-to-cart-btn">Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="product-pre">
+      <div class="card">
+        <img class="card-img-top" src="/zocker/img/phụ kiện/tui-trong-zocker_4356_HasThumb_Thumb.jpg"
+          alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"> thể thao</p>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" data-name="Túi trống thể thao Zocker"
+              data-price="450000">450.000VNĐ</button>
+            <button type="button" class="btn btn-outline-warning add-to-cart-btn">Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- Giỏ hàng -->
+  <div id="cartt" class="cartt">
+    <span id="closeForm" class="close-btn">&times;</span>
+
+    <div class="cart" style="margin: 0px;" id="myForm">
+      <h2>CART</h2>
+      <form>
+        <table id="cart">
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng(đôi)</th>
+            <th>Discount(%)</th>
+            <th>Thành tiền</th>
+            <th>Tiền sau Discount</th>
+            <th>Chọn</th>
+          </tr>
+        </table>
+        <p id="tongTien">Tổng tiền: 0 VNĐ</p>
+      </form>
+    </div>
+    <button id="checkoutBtn">Thanh toán</button>
+  </div>
+
+
+
+
+  <!-- Các mã HTML như trước -->
+
+<script>
+  // Lấy tất cả các nút "Thêm vào giỏ hàng"
+  const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
+
+  // Lắng nghe sự kiện click trên các nút "Thêm vào giỏ hàng"
+  addToCartBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      // Lấy thông tin sản phẩm từ thuộc tính data của nút "Thêm vào giỏ hàng"
+      const productName = this.parentElement.parentElement.querySelector(".card-text").textContent;
+      const productPrice = parseInt(this.parentElement.querySelector(".btn-primary").textContent.replace(/[^0-9]/g, ""));
+      const productImage = this.dataset.image; // Lấy đường dẫn hình ảnh từ thuộc tính data-image
+
+      // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng hay chưa
+      const cartTable = document.getElementById("cart");
+      const rows = cartTable.getElementsByTagName("tr");
+      let productExists = false;
+
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (row.cells[0].textContent === productName) {
+          productExists = true;
+          const quantityInput = row.querySelector(".product-quantity");
+          const quantity = parseInt(quantityInput.value) + 1;
+          quantityInput.value = quantity;
+          updateCartItem(row);
+          break;
+        }
+      }
+
+      // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm một hàng mới
+      if (!productExists) {
+        const newRow = cartTable.insertRow(-1);
+        const cellImage = newRow.insertCell(0); // Thêm ô chứa hình ảnh vào hàng mới
+        const cellName = newRow.insertCell(1);
+        const cellPrice = newRow.insertCell(2);
+        const cellQuantity = newRow.insertCell(3);
+        const cellDiscount = newRow.insertCell(4);
+        const cellTotal = newRow.insertCell(5);
+        const cellDiscountedTotal = newRow.insertCell(6);
+        const cellCheckbox = newRow.insertCell(7);
+
+        // Tạo thẻ img để chứa hình ảnh sản phẩm
+        const img = document.createElement("img");
+        img.src = productImage;
+        img.alt = productName;
+        img.width = 50; // Có thể điều chỉnh kích thước hình ảnh tùy ý
+
+        // Thêm thẻ img vào ô chứa hình ảnh
+        cellImage.appendChild(img);
+
+        cellName.innerHTML = productName;
+        cellPrice.innerHTML = productPrice.toLocaleString() + " VNĐ";
+        cellQuantity.innerHTML = "<input type='number' value='1' min='1' class='product-quantity' onchange='updateCartItem(this.parentElement.parentElement)'>";
+        cellDiscount.innerHTML = "<input type='number' value='0' min='0' max='100' class='product-discount' onchange='updateCartItem(this.parentElement.parentElement)'>";
+        cellTotal.innerHTML = productPrice.toLocaleString() + " VNĐ";
+        cellDiscountedTotal.innerHTML = productPrice.toLocaleString() + " VNĐ";
+        cellCheckbox.innerHTML = "<input type='checkbox' class='product-checkbox' onchange='updateCartTotal()'>";
+
+        // Cập nhật tổng tiền trong giỏ hàng
+        updateCartTotal();
+      }
+    });
+  });
+
+ // Hàm cập nhật một mục giỏ hàng
+  function updateCartItem(row) {
+    const quantity = parseInt(row.querySelector(".product-quantity").value);
+    const price = parseInt(row.cells[1].textContent.replace(/[^0-9]/g, ""));
+    const discount = parseInt(row.querySelector(".product-discount").value);
+
+    const totalValue = quantity * price;
+    const discountedTotalValue = totalValue - (totalValue * discount) / 100;
+
+    row.cells[4].textContent = totalValue.toLocaleString() + " VNĐ";
+    row.cells[5].textContent = discountedTotalValue.toLocaleString() + " VNĐ";
+
+    // Cập nhật tổng tiền trong giỏ hàng
+    updateCartTotal();
+  }
+
+  // Hàm cập nhật tổng tiền trong giỏ hàng
+  function updateCartTotal() {
+    const cartTable = document.getElementById("cart");
+    const rows = cartTable.getElementsByTagName("tr");
+    let total = 0;
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const discountedTotalValue = parseInt(row.cells[5].textContent.replace(/[^0-9]/g, ""));
+      total += discountedTotalValue;
+    }
+
+    document.getElementById("tongTien").textContent = "Tổng tiền: " + total.toLocaleString() + " VNĐ";
+  }
+  </script>
+
+</body>
+
+</html>
