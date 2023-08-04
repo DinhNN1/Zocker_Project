@@ -79,14 +79,15 @@ function info() {
     
 
 
-    document.getElementById("userInfo").textContent = JSON.stringify(userInfo, null, 1);
+    document.getElementById("userInfo").textContent = JSON.stringify(userInfo, null, 1); 
+    // gán nội dung chuỗi JSON vào phần tử có id="userInfo" để hiển thị thông tin người dùng dưới dạng chuỗi JSON.
 
    
 }
 
 
 
-/// button thanh toán 
+
 
 
 

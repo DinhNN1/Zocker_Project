@@ -132,10 +132,8 @@
 
                     <div style="z-index: 100;" id="thanhtoan">
                         <div class="cartt-icon" onclick="toggleCartt()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-handbag" viewBox="0 0 16 16"
-                                style="background-color: crimson; z-index: 100;">
-                            </svg>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                           
                         </div>
 
 
@@ -984,16 +982,23 @@
     <script>
         // Lấy phần tử button "Thanh toán"
         const checkoutBtn = document.getElementById("checkoutBtn");
-
+    
         // Lấy phần tử form thanh toán
         const paymentForm = document.getElementById("paymentForm");
-
+    
         // Xử lý sự kiện click trên button "Thanh toán"
-        checkoutBtn.addEventListener("click", function () {
-            // Cuộn đến form thanh toán ở cuối trang
+        checkoutBtn.addEventListener("click", function () { 
+             // Cuộn xuống form thanh toán ở cuối trang
             paymentForm.scrollIntoView({ behavior: "smooth" });
+
+            // Ẩn tab giỏ hàng
+            const cartTab = document.getElementById("cartt");
+            cartTab.style.display = "none";
+    
+          
         });
     </script>
+    
 
     <!-- đóng giỏ hàng  -->
     <script>
